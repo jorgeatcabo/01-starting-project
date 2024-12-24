@@ -11,10 +11,13 @@ function App() {
       expectedReturn:0,
       duration:0,
     })
+  
+  const [durationArray, setDurationArray] = useState([])
+  
   return (
     <main>
-      <UserInput onChangeValue={investmentData} setInvestmentObject={setInvestmentData } />
-      <Result data={investmentData} />
+      <UserInput setInvestmentObject={setInvestmentData } setDurationArr={setDurationArray} />
+      <Result data={investmentData} duration={durationArray} />
     </main>
   )
 }

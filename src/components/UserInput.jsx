@@ -3,19 +3,13 @@ import { useState } from "react"
 import { calculateInvestmentResults,formatter } from '../util/investment'
 
 
-export default function UserInput({ setInvestmentObject }) {
+export default function UserInput({ setInvestmentObject,setDurationArr }) {
   
   const [initial, setInitial] = useState(0)
   const [annual, setAnnual] = useState(0)
   const [expected, setExpected] = useState(0)
   const [duration, setDuration] = useState(0)
-  /*const [investmentObject, setInvestmentObject] = useState({
-    initialInvestment:initial,
-    annualInvestment:annual,
-    expectedReturn:expected,
-    duration:duration,
-  })*/
-
+  
   const onChangeInitial = (event) => {
     setInitial(event.target.value); 
     setInvestmentObject((initial) => ({ ...initial, initialInvestment: event.target.value }));
@@ -34,6 +28,12 @@ export default function UserInput({ setInvestmentObject }) {
   const onChangeDuration = (event) => {
     setDuration(event.target.value); 
     setInvestmentObject((duration) => ({ ...duration, duration: event.target.value }));
+    function createArray(N) {
+      return [...Array(N).keys()].map(i => i + 1);
+    }
+    console.log(event.target.value)
+    let arr = createArray(event.target.value);
+    setDurationArr(arr);
   }
 
   return (

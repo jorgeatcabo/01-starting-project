@@ -1,12 +1,14 @@
 import React from 'react'
 
-export default function Result({data}) {
+export default function Result({data,duration}) {
   return (
     <>
       <p>{data.initialInvestment}</p>
       <p>{data.annualInvestment}</p>
       <p>{data.expectedReturn}</p>
       <p>{data.duration}</p>
+
+      
           <table id="result">
           <thead>
             <tr>
@@ -17,15 +19,13 @@ export default function Result({data}) {
                 <th>Invested Capital</th>                  
             </tr>
               </thead>
-            <tbody>
+          <tbody>
+            {duration.map((row, rowIndex)=>
             <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>                  
+                <td>{row}</td>
             </tr>
-            </tbody>
+            )}
+          </tbody>
         </table>
       </>
   )
