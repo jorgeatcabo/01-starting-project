@@ -9,7 +9,8 @@ function App() {
       initialInvestment:0,
       annualInvestment:0,
       expectedReturn:0,
-      duration:0,
+      duration: 0,
+      durationArray:[],
     })
   
   const [durationArray, setDurationArray] = useState([])
@@ -17,7 +18,7 @@ function App() {
   return (
     <main>
       <UserInput setInvestmentObject={setInvestmentData } setDurationArr={setDurationArray} />
-      <Result data={investmentData} duration={durationArray} />
+      <Result data={investmentData} duration={investmentData.durationArray} />
     </main>
   )
 }

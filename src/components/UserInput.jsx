@@ -3,7 +3,7 @@ import { useState } from "react"
 import { calculateInvestmentResults,formatter } from '../util/investment'
 
 
-export default function UserInput({ setInvestmentObject,setDurationArr }) {
+export default function UserInput({ setInvestmentObject,setDurationArr,createArr }) {
   
   const [initial, setInitial] = useState(0)
   const [annual, setAnnual] = useState(0)
@@ -26,14 +26,14 @@ export default function UserInput({ setInvestmentObject,setDurationArr }) {
   }
 
   const onChangeDuration = (event) => {
-    setDuration(event.target.value); 
-    setInvestmentObject((duration) => ({ ...duration, duration: event.target.value }));
-    function createArray(N) {
-      return [...Array(N).keys()].map(i => i + 1);
+    let myArray = [];
+    for (let i = 0; i < event.target.value; i++) {
+      myArray.push(i+1);
     }
-    console.log(event.target.value)
-    let arr = createArray(event.target.value);
-    setDurationArr(arr);
+
+    setDuration(event.target.value); 
+    setInvestmentObject((duration) => ({ ...duration, duration: event.target.value,durationArray:myArray }));
+ 
   }
 
   return (

@@ -1,27 +1,23 @@
 import React from 'react'
 
-export default function Result({data,duration}) {
+export default function Result({ data, duration }) {
+
+console.log(duration)
   return (
     <>
-      <p>{data.initialInvestment}</p>
-      <p>{data.annualInvestment}</p>
-      <p>{data.expectedReturn}</p>
-      <p>{data.duration}</p>
-
-      
           <table id="result">
           <thead>
             <tr>
-                <th>Year</th>
-                <th>Investment Value</th>
-                <th>Interest(Year)</th>
-                <th>Total Interest</th>
-                <th>Invested Capital</th>                  
+                <th key="year">Year</th>
+            <th key="investment">Investment Value</th>
+                <th key="interest">Interest(Year)</th>
+                <th key="total">Total Interest</th>
+            <th key="invested">Invested Capital</th>                  
             </tr>
               </thead>
           <tbody>
             {duration.map((row, rowIndex)=>
-            <tr>
+            <tr key={rowIndex}>
                 <td>{row}</td>
             </tr>
             )}
