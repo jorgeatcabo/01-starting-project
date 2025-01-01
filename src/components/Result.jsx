@@ -18,7 +18,9 @@ console.log(duration)
           <tbody>
             {duration.map((row, rowIndex)=>
             <tr key={rowIndex}>
-                <td>{row}</td>
+                <td>{row.year}</td>
+                <td>{row.valueEndOfYear}</td>
+                
             </tr>
             )}
           </tbody>

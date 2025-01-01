@@ -1,6 +1,7 @@
 import UserInput from "./components/UserInput"
 import Result from "./components/Result"
 import { useState } from "react"
+import { calculateInvestmentResults,formatter } from './util/investment'
 
 function App() {
   //const [investmentData, setInvestementData] = useState({})
@@ -14,11 +15,12 @@ function App() {
     })
   
   const [durationArray, setDurationArray] = useState([])
+  const [investmentResultsArray, setInvestmentResultsArray] = useState([]);
   
   return (
     <main>
-      <UserInput setInvestmentObject={setInvestmentData } setDurationArr={setDurationArray} />
-      <Result data={investmentData} duration={investmentData.durationArray} />
+      <UserInput setInvestmentObject={setInvestmentData} setInvestmentResults={ setInvestmentResultsArray} data={investmentData}  />
+      <Result data={investmentData} duration={calculateInvestmentResults(investmentData)} />
     </main>
   )
 }
