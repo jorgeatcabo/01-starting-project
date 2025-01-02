@@ -3,7 +3,7 @@ import { useState } from "react"
 import { calculateInvestmentResults,formatter } from '../util/investment'
 
 
-export default function UserInput({ setInvestmentObject, setInvestmentResults, data }) {
+export default function UserInput({ setInvestmentObject, data }) {
   //console.log(data)
   const [initial, setInitial] = useState(0)
   const [annual, setAnnual] = useState(0)
@@ -12,35 +12,31 @@ export default function UserInput({ setInvestmentObject, setInvestmentResults, d
   
   const onChangeInitial = (event) => {
     setInitial(event.target.value); 
-    setInvestmentObject((initial) => ({ ...initial, initialInvestment: event.target.value }));
+    setInvestmentObject((initial) => ({ ...initial, initialInvestment: event.target.valueAsNumber }));
   }
 
   const onChangeAnual = (event) => {
+    console.log(typeof event.target.value)
     setAnnual(event.target.value); 
-    setInvestmentObject((annual) => ({ ...annual, annualInvestment: event.target.value }));
+    setInvestmentObject((annual) => ({ ...annual, annualInvestment: event.target.valueAsNumber }));
   }
 
   const onChangeExpected = (event) => {
     setExpected(event.target.value);
-    setInvestmentObject((expected) => ({ ...expected, expectedReturn: event.target.value }));
+    setInvestmentObject((expected) => ({ ...expected, expectedReturn: event.target.valueAsNumber }));
   }
 
   const onChangeDuration = (event) => {
-    let myArray = [];
+   /* let myArray = [];
     let investmentResultsArray = [];
    
     for (let i = 0; i < event.target.value; i++) {
       myArray.push(i+1);
-    }
+    }*/
     
 
     setDuration(event.target.value); 
-    setInvestmentObject((duration) => ({ ...duration, duration: event.target.value }));
-    setInvestmentObject((duration) => ({ ...duration, duration: event.target.value, durationArray:calculateInvestmentResults(data) }));
-    //investmentResultsArray = calculateInvestmentResults(data);
-    //setInvestmentObject((duration) => ({ ...duration, durationArray:myArray }));
-    //console.log(investmentResultsArray)
-    //console.log(data)
+    setInvestmentObject((duration) => ({ ...duration, duration: event.target.valueAsNumber, durationArray:calculateInvestmentResults(data) }));
   }
 
   return (
